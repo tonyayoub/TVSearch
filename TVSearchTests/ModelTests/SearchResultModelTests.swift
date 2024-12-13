@@ -42,18 +42,12 @@ final class ModelDecodingTests: XCTestCase {
         let decoder = JSONDecoder()
         let result = try decoder.decode(ShowSearchResult.self, from: json)
         
-        XCTAssertEqual(result.score, 0.909815)
         XCTAssertNotNil(result.show)
         
         let show = result.show!
         XCTAssertEqual(show.id, 139)
-        XCTAssertEqual(show.url, "https://www.tvmaze.com/shows/139/girls")
         XCTAssertEqual(show.name, "Girls")
-        XCTAssertEqual(show.language, "English")
         XCTAssertEqual(show.runtime, 30)
-        XCTAssertEqual(show.officialSite, "http://www.hbo.com/girls")
-        XCTAssertNotNil(show.rating)
-        XCTAssertNotNil(show.network)
         XCTAssertNotNil(show.image)
         XCTAssertNotNil(show.summary)
     }
@@ -87,45 +81,10 @@ final class ModelDecodingTests: XCTestCase {
         let show = try decoder.decode(Show.self, from: json)
         
         XCTAssertEqual(show.id, 525)
-        XCTAssertEqual(show.url, "https://www.tvmaze.com/shows/525/gilmore-girls")
         XCTAssertEqual(show.name, "Gilmore Girls")
-        XCTAssertEqual(show.language, "English")
         XCTAssertEqual(show.runtime, 60)
-        XCTAssertNil(show.officialSite)
-        XCTAssertNotNil(show.rating)
-        XCTAssertNotNil(show.network)
         XCTAssertNotNil(show.image)
         XCTAssertNotNil(show.summary)
-    }
-    
-    func testDecodeRating() throws {
-        let json = """
-        {
-          "average": 7.2
-        }
-        """.data(using: .utf8)!
-
-        let decoder = JSONDecoder()
-        let rating = try decoder.decode(Rating.self, from: json)
-        
-        XCTAssertEqual(rating.average, 7.2)
-    }
-    
-    func testDecodeNetwork() throws {
-        let json = """
-        {
-          "id": 1,
-          "name": "NBC",
-          "officialSite": "https://www.nbc.com/"
-        }
-        """.data(using: .utf8)!
-
-        let decoder = JSONDecoder()
-        let network = try decoder.decode(Network.self, from: json)
-        
-        XCTAssertEqual(network.id, 1)
-        XCTAssertEqual(network.name, "NBC")
-        XCTAssertEqual(network.officialSite, "https://www.nbc.com/")
     }
     
     func testDecodeImageInfo() throws {

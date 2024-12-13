@@ -1,0 +1,82 @@
+{
+  "showSearchResults": [
+    {
+      "show": {
+        "id": 1,
+        "name": "Show 1",
+        "genres": ["Drama", "Comedy"],
+        "runtime": 30,
+        "image": {
+          "medium": "https://example.com/image1-medium.jpg",
+          "original": "https://example.com/image1-original.jpg"
+        },
+        "summary": "This is a summary for Show 1."
+      }
+    },
+    {
+      "show": {
+        "id": 2,
+        "name": "Show 2",
+        "genres": ["Action"],
+        "runtime": 45,
+        "image": {
+          "medium": "https://example.com/image2-medium.jpg",
+          "original": "https://example.com/image2-original.jpg"
+        },
+        "summary": "This is a summary for Show 2."
+      }
+    }
+  ],
+  "shows": [
+    {
+      "id": 1,
+      "name": "Show 1",
+      "genres": ["Drama", "Comedy"],
+      "runtime": 30,
+      "image": {
+        "medium": "https://example.com/image1-medium.jpg",
+        "original": "https://example.com/image1-original.jpg"
+      },
+      "summary": "This is a summary for Show 1."
+    },
+    {
+      "id": 2,
+      "name": "Show 2",
+      "genres": ["Action"],
+      "runtime": 45,
+      "image": {
+        "medium": "https://example.com/image2-medium.jpg",
+        "original": "https://example.com/image2-original.jpg"
+      },
+      "summary": "This is a summary for Show 2."
+    }
+  ],
+  "episodes": [
+    {
+      "id": 1,
+      "url": "https://example.com/episode1",
+      "name": "Episode 1",
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "image": {
+        "medium": "https://example.com/episode1-medium.jpg",
+        "original": "https://example.com/episode1-original.jpg"
+      },
+      "summary": "This is a summary for Episode 1."
+    },
+    {
+      "id": 2,
+      "url": "https://example.com/episode2",
+      "name": "Episode 2",
+      "season": 1,
+      "number": 2,
+      "runtime": 30,
+      "image": {
+        "medium": "https://example.com/episode2-medium.jpg",
+        "original": "https://example.com/episode2-original.jpg"
+      },
+      "summary": "This is a summary for Episode 2."
+    }
+  ]
+}

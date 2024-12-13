@@ -26,7 +26,6 @@ final class JSONFileDecodingTests: XCTestCase {
         XCTAssertFalse(results.isEmpty, "Expected to parse at least one result")
         
         if let firstResult = results.first {
-            XCTAssertNotNil(firstResult.score, "Score should not be nil")
             XCTAssertNotNil(firstResult.show, "Show should not be nil")
             
             if let show = firstResult.show {
@@ -34,9 +33,6 @@ final class JSONFileDecodingTests: XCTestCase {
                 XCTAssertNotNil(show.name, "Show 'name' should not be nil")
                 
                 XCTAssertEqual(show.name, "Girls", "The first show's name does not match expected value")
-                
-                XCTAssertNotNil(show.rating, "Rating should not be nil")
-                XCTAssertNotNil(show.rating?.average, "Rating average should not be nil")
             }
         }
     }

@@ -29,9 +29,30 @@
 		F8396CAA2D09590200FC4040 /* TVSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F8396D5D2D0BE27400FC4040 /* Exceptions for "TVSearch" folder in "TVSearchTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"UI/Resources/Preview Content/MockService.swift",
+			);
+			target = F8396C9F2D09590200FC4040 /* TVSearchTests */;
+		};
+		F8396D5F2D0BFC4400FC4040 /* Exceptions for "TVSearch" folder in "TVSearch" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F8396C8A2D09590000FC4040 /* TVSearch */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F8396C8D2D09590000FC4040 /* TVSearch */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F8396D5F2D0BFC4400FC4040 /* Exceptions for "TVSearch" folder in "TVSearch" target */,
+				F8396D5D2D0BE27400FC4040 /* Exceptions for "TVSearch" folder in "TVSearchTests" target */,
+			);
 			path = TVSearch;
 			sourceTree = "<group>";
 		};
@@ -393,12 +414,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "https://api.tvmaze.com/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TVSearch/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TVSearch/UI/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HKUVL2QGT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TVSearch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -423,12 +446,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "https://api.tvmaze.com/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TVSearch/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TVSearch/UI/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HKUVL2QGT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TVSearch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

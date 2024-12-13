@@ -10,10 +10,11 @@ import SwiftUI
 @main
 struct TVSearchApp: App {
     let persistenceController = PersistenceController.shared
-
+    let service = MazeShowService()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(service: service)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
