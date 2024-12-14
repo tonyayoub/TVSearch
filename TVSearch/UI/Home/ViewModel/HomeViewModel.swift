@@ -15,6 +15,10 @@ class HomeViewModel: ObservableObject {
     @Published var searchQuery = ""
     @Published var error: String?
     
+    var genres: [String] {
+        Array(Set(shows.flatMap { $0.genres ?? [] })).sorted()
+    }
+    
     private let service: ShowService
     private var cancellables = Set<AnyCancellable>()
     private let debounceInterval: TimeInterval = 1.0
@@ -44,7 +48,7 @@ class HomeViewModel: ObservableObject {
         do {
             self.shows = try await service.search(query: query)
             showsByGenre = Dictionary(grouping: shows) { show in
-                show.genres?.first ?? "Unknown"
+                show.genres?.first ?? "Other"
             }
         } catch {
             print("Error performing search: \(error)")
