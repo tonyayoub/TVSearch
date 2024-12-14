@@ -18,7 +18,7 @@ struct MazeShowService: ShowService {
     func search(query: String) async throws -> [Show] {
         let url = try url(for: .searchShows(query: query))
         let (data, _) = try await URLSession.shared.data(from: url)
-        return try JSONDecoder().decode([Show].self, from: data)
+        return try JSONDecoder().decode([ShowSearchResult].self, from: data).compactMap { $0.show }
     }
     
     func getEpisodes(id: String) async throws -> [Episode] {

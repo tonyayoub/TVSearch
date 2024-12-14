@@ -33,6 +33,11 @@
 		F8396D5D2D0BE27400FC4040 /* Exceptions for "TVSearch" folder in "TVSearchTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				UI/Home/Views/EmptyResultsView.swift,
+				UI/Home/Views/GenreHeaderView.swift,
+				UI/Home/Views/GenreSectionView.swift,
+				UI/Home/Views/ShowCardView.swift,
+				UI/Home/Views/ShowListView.swift,
 				"UI/Resources/Preview Content/MockService.swift",
 			);
 			target = F8396C9F2D09590200FC4040 /* TVSearchTests */;

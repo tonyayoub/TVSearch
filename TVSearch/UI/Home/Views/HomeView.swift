@@ -16,13 +16,15 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.shows) { show in
-                Text(show.name ?? "Unknown Title")
+            ScrollView {
+                if viewModel.showsByGenre.isEmpty && viewModel.searchQuery.isEmpty {
+                    EmptyResultsView()
+                } else {
+                    ShowListView(showsByGenre: viewModel.showsByGenre)
+                }
             }
-            .navigationTitle("Shows")
-            .task {
-                await viewModel.loadSchedule()
-            }
+            .navigationTitle("Search Shows")
+            .searchable(text: $viewModel.searchQuery, prompt: "Search shows")
         }
     }
 }
