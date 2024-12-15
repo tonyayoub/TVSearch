@@ -32,13 +32,16 @@ struct HomeView: View {
             .searchable(text: $viewModel.searchQuery, prompt: "Search shows")
             .sheet(item: $viewModel.selectedShow) { ShowDetailsView(show: $0) }
         }
+        .navigationViewStyle(.stack)
     }
     
     private var filteredShows: [Show] {
         
         var shows = viewModel.shows
         if let selectedGenre = viewModel.selectedGenre {
-            shows = shows.filter { $0.genres!.contains(selectedGenre) }
+            shows = shows.filter {
+                ($0.genres ?? []).contains(selectedGenre)
+            }
         }
         return shows
     }
