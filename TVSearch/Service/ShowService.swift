@@ -8,7 +8,5 @@
 import Foundation
 
 protocol ShowService {
-    func getSchedule() async throws -> [Show]
     func search(query: String) async throws -> [Show]
-    func getEpisodes(id: String) async throws -> [Episode]
 }

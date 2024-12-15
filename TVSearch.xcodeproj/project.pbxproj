@@ -22,20 +22,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F8396D5D2D0BE27400FC4040 /* Exceptions for "TVSearch" folder in "TVSearchTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Service/NetworkMonitor.swift,
-				UI/Components/EmptyResultsView.swift,
-				UI/Components/FilterView.swift,
-				UI/Details/View/ShowDetailsView.swift,
-				UI/Home/View/SearchResultView.swift,
-				UI/Home/View/ShowCardView.swift,
-				UI/Home/View/ShowGridView.swift,
-				"UI/Resources/Preview Content/MockService.swift",
-			);
-			target = F8396C9F2D09590200FC4040 /* TVSearchTests */;
-		};
 		F8396D5F2D0BFC4400FC4040 /* Exceptions for "TVSearch" folder in "TVSearch" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -50,7 +36,6 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F8396D5F2D0BFC4400FC4040 /* Exceptions for "TVSearch" folder in "TVSearch" target */,
-				F8396D5D2D0BE27400FC4040 /* Exceptions for "TVSearch" folder in "TVSearchTests" target */,
 			);
 			path = TVSearch;
 			sourceTree = "<group>";

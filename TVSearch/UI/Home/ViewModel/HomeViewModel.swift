@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-@MainActor
 class HomeViewModel: ObservableObject {
     @Published var shows: [Show] = []
     @Published var showsByGenre: [String: [Show]] = [:]
@@ -24,8 +23,10 @@ class HomeViewModel: ObservableObject {
         Array(Set(shows.flatMap { $0.genres ?? [] })).sorted()
     }
     
+    // var is used to be mocked in tests - should use protocols and be injected like service
+    var networkMonitor = NetworkMonitor()
+    
     private let service: ShowService
-    private let networkMonitor = NetworkMonitor()
     private var cancellables = Set<AnyCancellable>()
     
     init(service: ShowService) {
@@ -34,18 +35,8 @@ class HomeViewModel: ObservableObject {
         setupNetworkMonitoring()
     }
     
-    func loadSchedule() async {
-        do {
-            self.shows = try await service.getSchedule()
-            
-        } catch {
-            self.error = "Cannot load service"
-        }
-    }
-    
     @MainActor
     func performSearch(query: String) async {
-        print("Will performSearch...")
         guard !query.isEmpty else {
             shows = []
             showsByGenre = [:]
@@ -94,7 +85,6 @@ class HomeViewModel: ObservableObject {
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] query in
-                print("search query changed: \(query)")
                 guard let self = self else { return }
                 Task {
                     await self.performSearch(query: query)
