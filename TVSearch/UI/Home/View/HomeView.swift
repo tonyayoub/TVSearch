@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
-    @State private var selectedGenre: String? = nil
 
     init(service: ShowService) {
         _viewModel = StateObject(wrappedValue: .init(service: service))
@@ -21,25 +20,25 @@ struct HomeView: View {
                 if filteredShows.isEmpty {
                     EmptyResultsView()
                 } else {
-                    FilteredContentView(
+                    SearchResultView(
                         genres: viewModel.genres,
-                        selectedGenre: $selectedGenre,
-                        shows: filteredShows
+                        shows: filteredShows,
+                        selectedGenre: $viewModel.selectedGenre,
+                        selectedShow: $viewModel.selectedShow
                     )
                 }
             }
             .navigationTitle("Search Shows")
             .searchable(text: $viewModel.searchQuery, prompt: "Search shows")
+            .sheet(item: $viewModel.selectedShow) { ShowDetailsView(show: $0) }
         }
     }
     
     private var filteredShows: [Show] {
+        
         var shows = viewModel.shows
-        if let selectedGenre = selectedGenre {
+        if let selectedGenre = viewModel.selectedGenre {
             shows = shows.filter { $0.genres!.contains(selectedGenre) }
-        }
-        if !viewModel.searchQuery.isEmpty {
-            shows = shows.filter { $0.name!.localizedCaseInsensitiveContains(viewModel.searchQuery) }
         }
         return shows
     }

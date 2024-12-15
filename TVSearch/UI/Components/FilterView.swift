@@ -12,31 +12,32 @@ struct FilterView: View {
     @Binding var selected: String?
 
     var body: some View {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    if !filters.isEmpty {
-                        Button(action: { selected = nil }) {
-                            Text("All")
-                                .padding()
-                                .background(selected == nil ? Color.blue : Color.gray.opacity(0.2))
-                                .foregroundColor(selected == nil ? .white : .black)
-                                .cornerRadius(8)
-                        }
-                    }
-                    ForEach(filters, id: \.self) { genre in
-                        Button(action: { selected = genre }) {
-                            Text(genre)
-                                .padding()
-                                .background(selected == genre ? Color.blue : Color.gray.opacity(0.2))
-                                .foregroundColor(selected == genre ? .white : .black)
-                                .cornerRadius(8)
-                        }
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                if !filters.isEmpty {
+                    Button(action: { selected = nil }) {
+                        Text("All")
+                            .padding()
+                            .background(selected == nil ? Color.accentColor : Color(UIColor.systemGray5))
+                            .foregroundColor(selected == nil ? Color(UIColor.systemBackground) : Color(UIColor.label))
+                            .cornerRadius(8)
                     }
                 }
-                .padding()
+                ForEach(filters, id: \.self) { genre in
+                    Button(action: { selected = genre }) {
+                        Text(genre)
+                            .padding()
+                            .background(selected == genre ? Color.accentColor : Color(UIColor.systemGray5))
+                            .foregroundColor(selected == genre ? Color(UIColor.systemBackground) : Color(UIColor.label))
+                            .cornerRadius(8)
+                    }
+                }
             }
+            .padding()
         }
+    }
 }
+
 
 #Preview {
     VStack {

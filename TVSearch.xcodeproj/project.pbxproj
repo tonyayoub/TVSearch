@@ -33,13 +33,14 @@
 		F8396D5D2D0BE27400FC4040 /* Exceptions for "TVSearch" folder in "TVSearchTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				UI/Components/EmptyResultsView.swift,
 				UI/Components/FilterView.swift,
-				UI/Home/Views/EmptyResultsView.swift,
-				UI/Home/Views/FilteredContentView.swift,
-				UI/Home/Views/GenreHeaderView.swift,
-				UI/Home/Views/GenreSectionView.swift,
-				UI/Home/Views/ShowCardView.swift,
-				UI/Home/Views/ShowsGridView.swift,
+				UI/Details/View/ShowDetailsView.swift,
+				UI/Home/View/GenreHeaderView.swift,
+				UI/Home/View/GenreSectionView.swift,
+				UI/Home/View/SearchResultView.swift,
+				UI/Home/View/ShowCardView.swift,
+				UI/Home/View/ShowGridView.swift,
 				"UI/Resources/Preview Content/MockService.swift",
 			);
 			target = F8396C9F2D09590200FC4040 /* TVSearchTests */;
@@ -432,8 +433,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -464,8 +464,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

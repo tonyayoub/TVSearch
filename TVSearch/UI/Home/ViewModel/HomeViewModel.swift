@@ -14,6 +14,8 @@ class HomeViewModel: ObservableObject {
     @Published var showsByGenre: [String: [Show]] = [:]
     @Published var searchQuery = ""
     @Published var error: String?
+    @Published var selectedGenre: String? = nil
+    @Published var selectedShow: Show? = nil
     
     var genres: [String] {
         Array(Set(shows.flatMap { $0.genres ?? [] })).sorted()
@@ -50,6 +52,7 @@ class HomeViewModel: ObservableObject {
             showsByGenre = Dictionary(grouping: shows) { show in
                 show.genres?.first ?? "Other"
             }
+            print("Shows by genre: \(showsByGenre.count)")
         } catch {
             print("Error performing search: \(error)")
             shows = []
