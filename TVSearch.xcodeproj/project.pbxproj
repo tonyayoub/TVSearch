@@ -14,19 +14,11 @@
 			remoteGlobalIDString = F8396C8A2D09590000FC4040;
 			remoteInfo = TVSearch;
 		};
-		F8396CAB2D09590200FC4040 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F8396C832D09590000FC4040 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F8396C8A2D09590000FC4040;
-			remoteInfo = TVSearch;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F8396C8B2D09590000FC4040 /* TVSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8396CA02D09590200FC4040 /* TVSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8396CAA2D09590200FC4040 /* TVSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,8 +28,6 @@
 				UI/Components/EmptyResultsView.swift,
 				UI/Components/FilterView.swift,
 				UI/Details/View/ShowDetailsView.swift,
-				UI/Home/View/GenreHeaderView.swift,
-				UI/Home/View/GenreSectionView.swift,
 				UI/Home/View/SearchResultView.swift,
 				UI/Home/View/ShowCardView.swift,
 				UI/Home/View/ShowGridView.swift,
@@ -69,11 +59,6 @@
 			path = TVSearchTests;
 			sourceTree = "<group>";
 		};
-		F8396CAD2D09590200FC4040 /* TVSearchUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TVSearchUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,13 +76,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F8396CA72D09590200FC4040 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -106,7 +84,6 @@
 			children = (
 				F8396C8D2D09590000FC4040 /* TVSearch */,
 				F8396CA32D09590200FC4040 /* TVSearchTests */,
-				F8396CAD2D09590200FC4040 /* TVSearchUITests */,
 				F8396C8C2D09590000FC4040 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,7 +93,6 @@
 			children = (
 				F8396C8B2D09590000FC4040 /* TVSearch.app */,
 				F8396CA02D09590200FC4040 /* TVSearchTests.xctest */,
-				F8396CAA2D09590200FC4040 /* TVSearchUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,29 +145,6 @@
 			productReference = F8396CA02D09590200FC4040 /* TVSearchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F8396CA92D09590200FC4040 /* TVSearchUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F8396CBA2D09590200FC4040 /* Build configuration list for PBXNativeTarget "TVSearchUITests" */;
-			buildPhases = (
-				F8396CA62D09590200FC4040 /* Sources */,
-				F8396CA72D09590200FC4040 /* Frameworks */,
-				F8396CA82D09590200FC4040 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F8396CAC2D09590200FC4040 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F8396CAD2D09590200FC4040 /* TVSearchUITests */,
-			);
-			name = TVSearchUITests;
-			packageProductDependencies = (
-			);
-			productName = TVSearchUITests;
-			productReference = F8396CAA2D09590200FC4040 /* TVSearchUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -206,10 +159,6 @@
 						CreatedOnToolsVersion = 16.0;
 					};
 					F8396C9F2D09590200FC4040 = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = F8396C8A2D09590000FC4040;
-					};
-					F8396CA92D09590200FC4040 = {
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = F8396C8A2D09590000FC4040;
 					};
@@ -231,7 +180,6 @@
 			targets = (
 				F8396C8A2D09590000FC4040 /* TVSearch */,
 				F8396C9F2D09590200FC4040 /* TVSearchTests */,
-				F8396CA92D09590200FC4040 /* TVSearchUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -245,13 +193,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F8396C9E2D09590200FC4040 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F8396CA82D09590200FC4040 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -275,13 +216,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F8396CA62D09590200FC4040 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -289,11 +223,6 @@
 			isa = PBXTargetDependency;
 			target = F8396C8A2D09590000FC4040 /* TVSearch */;
 			targetProxy = F8396CA12D09590200FC4040 /* PBXContainerItemProxy */;
-		};
-		F8396CAC2D09590200FC4040 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F8396C8A2D09590000FC4040 /* TVSearch */;
-			targetProxy = F8396CAB2D09590200FC4040 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -517,40 +446,6 @@
 			};
 			name = Release;
 		};
-		F8396CBB2D09590200FC4040 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9HKUVL2QGT;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.amahy.TVSearchUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TVSearch;
-			};
-			name = Debug;
-		};
-		F8396CBC2D09590200FC4040 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9HKUVL2QGT;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.amahy.TVSearchUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TVSearch;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -577,15 +472,6 @@
 			buildConfigurations = (
 				F8396CB82D09590200FC4040 /* Debug */,
 				F8396CB92D09590200FC4040 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F8396CBA2D09590200FC4040 /* Build configuration list for PBXNativeTarget "TVSearchUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F8396CBB2D09590200FC4040 /* Debug */,
-				F8396CBC2D09590200FC4040 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

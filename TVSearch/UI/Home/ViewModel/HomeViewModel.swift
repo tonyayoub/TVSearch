@@ -16,6 +16,8 @@ class HomeViewModel: ObservableObject {
     @Published var error: String?
     @Published var selectedGenre: String? = nil
     @Published var selectedShow: Show? = nil
+    @Published var showEmptyView: Bool = false
+    @Published var reasonForEmptyView = EmptyResultView.Reason.noQuery
     
     var genres: [String] {
         Array(Set(shows.flatMap { $0.genres ?? [] })).sorted()
@@ -23,11 +25,10 @@ class HomeViewModel: ObservableObject {
     
     private let service: ShowService
     private var cancellables = Set<AnyCancellable>()
-    private let debounceInterval: TimeInterval = 1.0
     
     init(service: ShowService) {
         self.service = service
-        setupSearch(debounceInterval: debounceInterval)
+        setupSearchSignals()
     }
     
     func loadSchedule() async {
@@ -60,9 +61,25 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    private func setupSearch(debounceInterval: TimeInterval) {
+    private func setupSearchSignals() {
+        $shows
+            .map { $0.isEmpty }
+            .assign(to: &$showEmptyView)
+        
+        Publishers.CombineLatest($shows, $searchQuery)
+            .map { shows, searchQuery -> EmptyResultView.Reason in
+                if searchQuery.isEmpty {
+                    return .noQuery
+                } else if shows.isEmpty {
+                    return .noResults
+                }
+                
+                return .noQuery
+            }
+            .assign(to: &$reasonForEmptyView)
+        
         $searchQuery
-            .debounce(for: .seconds(debounceInterval), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] query in
                 guard let self = self else { return }

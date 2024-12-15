@@ -7,13 +7,33 @@
 
 import SwiftUI
 
-struct EmptyResultsView: View {
+struct EmptyResultView: View {
+    enum Reason {
+        case noResults
+        case noQuery
+    }
+    
+    let reason: Reason
+
     var body: some View {
-        Text("No results found")
-            .foregroundColor(.gray)
+        VStack {
+            switch reason {
+            case .noResults:
+                Text("No results found")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+
+            case .noQuery:
+                Text("Start typing to search for your favorite shows")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+            }
+        }
+        .padding()
+        .multilineTextAlignment(.center)
     }
 }
 
 #Preview {
-    EmptyResultsView()
+    EmptyResultView(reason: .noQuery)
 }

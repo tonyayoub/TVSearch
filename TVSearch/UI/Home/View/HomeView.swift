@@ -17,8 +17,8 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             Group {
-                if filteredShows.isEmpty {
-                    EmptyResultsView()
+                if viewModel.showEmptyView {
+                    EmptyResultView(reason: viewModel.reasonForEmptyView)
                 } else {
                     SearchResultView(
                         genres: viewModel.genres,

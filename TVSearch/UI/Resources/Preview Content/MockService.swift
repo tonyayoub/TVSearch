@@ -13,12 +13,8 @@ class MockService: ShowService {
     }
     
     func search(query: String) async throws -> [Show] {
-        let results = Show.sampleData(count: 5);
-        print("will return \(results.count) results")
-        return results;
         let searchResults = decode([ShowSearchResult].self, forKey: "showSearchResults")
-        let shows = searchResults?.compactMap { $0.show }
-        return shows ?? []
+        return searchResults?.compactMap { $0.show } ?? []
     }
     
     func getEpisodes(id: String) async throws -> [Episode] {
