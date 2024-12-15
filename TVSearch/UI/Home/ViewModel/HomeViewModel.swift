@@ -18,17 +18,20 @@ class HomeViewModel: ObservableObject {
     @Published var selectedShow: Show? = nil
     @Published var showEmptyView: Bool = false
     @Published var reasonForEmptyView = EmptyResultView.Reason.noQuery
+    @Published var isConnected = true
     
     var genres: [String] {
         Array(Set(shows.flatMap { $0.genres ?? [] })).sorted()
     }
     
     private let service: ShowService
+    private let networkMonitor = NetworkMonitor()
     private var cancellables = Set<AnyCancellable>()
     
     init(service: ShowService) {
         self.service = service
         setupSearchSignals()
+        setupNetworkMonitoring()
     }
     
     func loadSchedule() async {
@@ -42,6 +45,7 @@ class HomeViewModel: ObservableObject {
     
     @MainActor
     func performSearch(query: String) async {
+        print("Will performSearch...")
         guard !query.isEmpty else {
             shows = []
             showsByGenre = [:]
@@ -53,7 +57,6 @@ class HomeViewModel: ObservableObject {
             showsByGenre = Dictionary(grouping: shows) { show in
                 show.genres?.first ?? "Other"
             }
-            print("Shows by genre: \(showsByGenre.count)")
         } catch {
             print("Error performing search: \(error)")
             shows = []
@@ -62,31 +65,58 @@ class HomeViewModel: ObservableObject {
     }
     
     private func setupSearchSignals() {
-        $shows
-            .map { $0.isEmpty }
+        
+        // show empty view
+        Publishers.CombineLatest($isConnected, $shows)
+            .map { isConnected, shows -> Bool in
+                !isConnected || shows.isEmpty
+            }
             .assign(to: &$showEmptyView)
         
-        Publishers.CombineLatest($shows, $searchQuery)
-            .map { shows, searchQuery -> EmptyResultView.Reason in
-                if searchQuery.isEmpty {
+        // reason for empty view
+        Publishers.CombineLatest3($shows, $searchQuery, $isConnected)
+            .map { shows, searchQuery, isConnected -> EmptyResultView.Reason in
+                if !isConnected {
+                    return .noConnection
+                } else if searchQuery.isEmpty {
                     return .noQuery
                 } else if shows.isEmpty {
                     return .noResults
                 }
                 
-                return .noQuery
+                return .noQuery // Fallback (unlikely to occur)
             }
             .assign(to: &$reasonForEmptyView)
         
+        // perform search upon typing query
         $searchQuery
+            .filter { _ in self.isConnected }
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] query in
+                print("search query changed: \(query)")
                 guard let self = self else { return }
                 Task {
                     await self.performSearch(query: query)
                 }
             }
             .store(in: &cancellables)
+        
+        // perform search upon restoring connectivity with a non-empty query
+        $isConnected
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .filter { isConnected in isConnected && !self.searchQuery.isEmpty }
+            .sink { _ in
+                Task {
+                    await self.performSearch(query: self.searchQuery)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setupNetworkMonitoring() {
+        networkMonitor.networkStatus
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$isConnected)
     }
 }

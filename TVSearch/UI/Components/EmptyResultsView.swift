@@ -11,6 +11,7 @@ struct EmptyResultView: View {
     enum Reason {
         case noResults
         case noQuery
+        case noConnection
     }
     
     let reason: Reason
@@ -27,7 +28,13 @@ struct EmptyResultView: View {
                 Text("Start typing to search for your favorite shows")
                     .font(.headline)
                     .foregroundColor(.gray)
+                
+            case .noConnection:
+                Text("Internet not available. Please check your network connection")
+                    .font(.headline)
+                    .foregroundColor(.gray)
             }
+
         }
         .padding()
         .multilineTextAlignment(.center)
